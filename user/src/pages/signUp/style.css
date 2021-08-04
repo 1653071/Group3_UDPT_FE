@@ -1,0 +1,16 @@
+.signUp {
+    display: flex;
+    width: 90%;
+}
+
+.signUp .intro_img img {
+    width: 800px;
+    height: 450px;
+}
+
+.signUp_form {
+    width: 40%;
+    padding: 30px 70px;
+}
+
+
