@@ -1,0 +1,13 @@
+.sidebar ul li{
+    list-style-type: none;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+}
+
+.sidebar {
+    background-color: #FFFAF0;
+}

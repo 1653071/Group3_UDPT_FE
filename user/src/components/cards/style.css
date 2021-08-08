@@ -1,5 +1,6 @@
 .card {
     padding: 20px;
+    margin-top: 20px;
 }
 .card img{
         vertical-align: middle;
@@ -19,4 +20,18 @@
 
 .card .comment {
     margin: 10px 0px;
+}
+
+.tagList {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tagList .tag_item {
+    margin-right: 10px;
+}
+
+.dropdown-toggle {
+    padding-left: 45px;
+    padding-right: 45px;
 }

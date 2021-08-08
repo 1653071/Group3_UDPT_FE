@@ -1,0 +1,21 @@
+.mainBar {
+    background-color: rgb(255, 174, 75);
+    height: 60px;
+    position: sticky;
+}
+
+button  {
+    margin-right: 10px;
+}
+
+.account_group {
+    margin-top: 10px;
+}
+
+.search input{
+    border-radius: 20px;
+    border: none;
+    width: 300px;
+    height: 30px;
+    margin-top: 10px;
+}
