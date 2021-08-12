@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from '../cards'
+import "../comments/style.css"
 
 export default function Comment() {
   const comments = [
@@ -24,6 +25,11 @@ export default function Comment() {
 ]
     return (
         <div>
+          <div className="comment_field">
+            <input className="comment" type='text' size="70" placeholder="Comment.."></input>
+            <i class="fa fa-paper-plane"></i>
+            </div>
+            <hr/>
              <div data-toggle="modal" data-target="#myModal">
                 Other comments ....
             </div>
