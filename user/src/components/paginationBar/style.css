@@ -1,0 +1,16 @@
+
+.pagination{
+    margin-bottom: 10px;
+}
+.pagination_content {
+   text-align: center;
+   width: 50%;
+   margin: 0 auto;
+}
+
+.pagination span{
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-right: 5px;
+    padding: 5px 9.5px;
+    border-radius: 100%;
+}
