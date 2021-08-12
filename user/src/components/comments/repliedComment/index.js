@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Card from '../../cards'
+import "../../comments/style.css"
 
 export default function RepliedComments({ type }) {
     const  [isShownReplies, setShowReplies] = useState(false);
@@ -26,6 +27,11 @@ export default function RepliedComments({ type }) {
     let isShown = isShownReplies;
     return (
         <div>
+            <div className="comment_field">
+            <input className="comment" type='text' size="40" placeholder="Comment.."></input>
+            <i class="fa fa-paper-plane"></i>
+            </div>
+            <hr/>
             {replies && isShownReplies
             ? 
             <div onClick={() => setShowReplies(!isShown)}>

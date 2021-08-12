@@ -1,0 +1,12 @@
+.filter_modal_body {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.modal_item {
+    background-color: rgba(0, 163, 255, 0.5);
+    border: none;
+    height: 40px;
+    width: 100px;
+    margin: 10px;
+}

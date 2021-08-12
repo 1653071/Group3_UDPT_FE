@@ -32,8 +32,7 @@ export default function Card({ data, type }) {
                 })
             }
         </div>
-            <input className="comment" type='text' placeholder="Comment.."></input>
-            <hr/>
+        
             {type === 'question' ? <Comment questionTitle={title} /> : (type !== 'replies' ? <RepliedComments /> : '') }
         </div>
     )
