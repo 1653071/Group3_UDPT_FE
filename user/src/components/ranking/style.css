@@ -1,0 +1,8 @@
+.ranking {
+    display: flex;
+    justify-content:space-between ;
+}
+
+.user_info p{
+    display: inline;
+}

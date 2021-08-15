@@ -1,7 +1,8 @@
 import React from 'react'
 import "./style.css"
 
-export default function PaginationBar({numOfItem}) {
+export default function PaginationBar({numOfItem, setPageIndex, selected}) {
+    
     const getPageNumber = () => {
         const numPage = numOfItem + 1;
         if(numPage < 12) return 1;
@@ -12,7 +13,11 @@ export default function PaginationBar({numOfItem}) {
     const drawPagination = () => {
         const arr = [...Array(getPageNumber()).keys()]
         return arr.map((item) => {
-            return <span>{item + 1}</span>
+            return <span style={{
+            backgroundColor: selected === item + 1 
+            ? 'rgba(0, 0, 0, 0.5)' 
+            : 'rgba(0, 0, 0, 0.2)' }}
+            onClick={()=>{setPageIndex(item + 1)}}>{item + 1}</span>
         })
     }
     return (

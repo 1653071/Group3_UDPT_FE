@@ -1,9 +1,9 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import PaginationBar from '../paginationBar'
 import "./style.css"
 
 export default function FilterModal() {
-    const tags = [
+    const tagList = [
         {id:0,name:'HTML'},
         {id:1,name:'CSS'},
         {id:2,name:'JS'},
@@ -19,13 +19,30 @@ export default function FilterModal() {
         {id:12,name:'Git'},
         {id:13,name:'JSON'},
     ]
-    const getFilteredTagList = () => {
-        return tags.map((item) => {
+  
+    const [tags, setTags] = useState(tagList.slice(0,12));
+    const [pageIndex, setPageIndex] = useState(1);
+    const getFilteredTagList = (taglist) => {
+        return taglist.map((item) => {
+          if(item !== '') {
             return <div>
-                <button className="modal_item">{item.name}</button>
-            </div>
+            <button className="modal_item">{item.name}</button>
+        </div>
+          }
+           return <div className="modal_item_empty"></div>;
         })
     }
+    useEffect(() => {
+      const start = (pageIndex - 1) * 12;
+      const end = start === 0 ? 12 : (start * 2 || tagList.length);
+      const tempArray = [...tagList.slice(start, end)];
+      const len = tempArray.length;
+      for(let i = 0 ; i < 12 - len; i++) {
+        tempArray.push('');
+      }
+      setTags(tempArray);
+    }, [pageIndex]);
+
     return (
         <div className="modal" id="filterModal">
         <div className="modal-dialog">
@@ -36,10 +53,12 @@ export default function FilterModal() {
               <button type="button" className="close" data-dismiss="modal">×</button>
             </div>
             {/* Modal body */}
-            <div className="modal-body filter_modal_body ">
-              {getFilteredTagList()}
+            <div className="modal-body filter_modal_body"
+      
+            >
+              {getFilteredTagList(tags)}
             </div>
-            <PaginationBar numOfItem={tags.length}/>
+            <PaginationBar numOfItem={tagList.length} setPageIndex={setPageIndex} selected={pageIndex}/>
             {/* Modal footer */}
             <div className="modal-footer">
               <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
