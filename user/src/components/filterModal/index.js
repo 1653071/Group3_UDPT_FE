@@ -35,8 +35,9 @@ export default function FilterModal() {
     useEffect(() => {
       const start = (pageIndex - 1) * 12;
       const end = start === 0 ? 12 : (start * 2 || tagList.length);
-      const tempArray = tagList.slice(start, end);
-      for(let i = 0 ; i < 12 - tempArray.length; i ++) {
+      const tempArray = [...tagList.slice(start, end)];
+      const len = tempArray.length;
+      for(let i = 0 ; i < 12 - len; i++) {
         tempArray.push('');
       }
       setTags(tempArray);
