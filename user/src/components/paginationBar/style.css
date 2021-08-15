@@ -13,4 +13,9 @@
     margin-right: 5px;
     padding: 5px 9.5px;
     border-radius: 100%;
+    cursor: pointer;
+}
+
+.pagination span:active {
+    background-color: rgba(0, 0, 0, 0.4);
 }
