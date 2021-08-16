@@ -1,16 +1,19 @@
 import React from 'react'
+import ProfileIcon from '../../profile/profileIcon'
 import "./style.css"
 
 export default function MainBar() {
     return (
         <div className="mainBar row">
-            <div className="col-sm-4"></div>
+            <div className="col-sm-2"></div>
             <div className="search col-sm-3"><input type='text' placeholder="Search..."/></div>
             <div className="account_group col-sm-3">
                 <button className="btn btn-default" onClick={()=>{window.open("/signup",'_parent')}}>Sign Up</button>
                 <button className="btn btn-default" onClick={()=>{window.open("/signin",'_parent')}}>Sign In</button>
-                <div className="account"></div>
             </div>
+            <div className="account col-sm-2">
+                    <ProfileIcon />
+                </div>
         </div>
     )
 }
