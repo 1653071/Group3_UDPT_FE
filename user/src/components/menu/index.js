@@ -10,9 +10,12 @@ export default function Menu({data, component: Component, header: Header, header
                 <SideBar />
                 <div className="col-sm-6">
                     {typeof header !== 'string' ? <Header /> : <div><h3>{header}</h3><hr/></div>}
-                    {data.map((item) => {
+                    { Array.isArray(data) ? data.map((item) => {
                         return <Component data={item} type="question"/>
-                    })}
+                    }) : 
+                         <Component />
+                    } 
+                    {/* {renderComponent(data)} */}
                 </div>
                 <div className="col-sm-2"></div>
             </div>
