@@ -8,7 +8,7 @@ export default function Card({ data, type }) {
 
     const {content, title, tag} = data;
     return (
-        <div className="card">
+        <div className="cardInfo">
             <div className="row">
                 <div className="col">
                     <img src={avatar} /> Vu Minh Dang

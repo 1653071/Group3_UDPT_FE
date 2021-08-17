@@ -1,4 +1,5 @@
 import React from 'react'
+import FilterModal from '../filterModal'
 
 export default function AddModal() {
     return (
@@ -22,8 +23,18 @@ export default function AddModal() {
                                 <label htmlFor="pwd">Body:</label>
                                 <textarea className="form-control" rows="7" />
                             </div>
+                            <div className="form-group" data-toggle="modal" data-target="#addTagModal">
+                                <label htmlFor="pwd">Tags:</label>
+                                <textarea className="form-control" rows="7" />
+                            </div>
+                            <FilterModal title="Add Tags" modalTarget="addTagModal" BtnOK="OK"/>
                         </div>
                     </div>
+                    {/* <div style={{textAlign:"center", marginBottom: "20px"}}>
+                        <button className="btn btn-success" data-toggle="modal" data-target="#filterModal">Add Tags</button>
+                       
+                    </div> */}
+                    
                     {/* Modal footer */}
                     <div className="modal-footer">
                         <button type="button" className="btn btn-danger" data-dismiss="modal" >Close</button>
