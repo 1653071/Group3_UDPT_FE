@@ -10,7 +10,7 @@ export default function TaskBar() {
             <div className="col">
             <div className="row">
                 <button className="btn col " data-toggle="modal" data-target="#filterModal"><i className="fa fa-filter"></i> Filter</button>
-                <FilterModal />
+                <FilterModal modalTarget="filterModal" BtnOK="Filter" BtnCancel="Cancel"/>
                 <button className="btn btn-secondary col">Latest <i class="fa fa-angle-down"></i></button>
             </div>
             </div>

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Card from '../../cards'
 import "../../comments/style.css"
 
-export default function RepliedComments({ type }) {
+export default function RepliedComments() {
     const  [isShownReplies, setShowReplies] = useState(false);
     const replies = [
         {
