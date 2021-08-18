@@ -1,6 +1,5 @@
 import React from 'react'
 import SideBar from '../bars/sidebar'
-import TaskBar from '../bars/taskbar'
 import "./style.css"
 
 export default function Menu({data, component: Component, header: Header, header}) {

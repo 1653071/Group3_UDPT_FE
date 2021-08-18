@@ -5,6 +5,7 @@ import SignIn from './pages/signIn';
 import MainBar from './components/bars/mainBar';
 import Chart from './pages/chart';
 import Account from './pages/account';
+import AddQuestion from './pages/createQuestion';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path='/signin' component={SignIn} exact/>
       <Route path='/chart' component={Chart} exact/>
       <Route path='/account' component={Account} exact/>
+      <Route path='/create_question' component={AddQuestion} exact/>
       </BrowserRouter>
     </div>
   );
