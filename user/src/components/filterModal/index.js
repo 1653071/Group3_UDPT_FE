@@ -21,7 +21,7 @@ export default function FilterModal({ title = "", modalTarget, BtnOK = "OK", Btn
         {id:13,name:'JSON',selected:false},
     ]
     const ref = useRef({
-      tagsArray: []
+      tagsArray: [] // store selected tags
     });
     const [tags, setTags] = useState(tagList.slice(0,12));
     const [pageIndex, setPageIndex] = useState(1);
@@ -34,13 +34,12 @@ export default function FilterModal({ title = "", modalTarget, BtnOK = "OK", Btn
           ref.current.tagsArray.push(tagId);
         } else {
 
-          ref.current.tagsArray.splice(ref.current.tagsArray.findIndex(item => item === duplicateTags),1);
+          ref.current.tagsArray.splice(ref.current.tagsArray.findIndex(item => item === duplicateTags), 1);
         }
         const newArr = [...tags]; 
         setTags(newArr); 
     }
 
-    console.log(ref.current.tagsArray);
     const getFilteredTagList = (taglist) => {
         return taglist.map((item) => {
           if(item !== '' && item.selected === true) {
@@ -61,23 +60,30 @@ export default function FilterModal({ title = "", modalTarget, BtnOK = "OK", Btn
           }  
         })
     }
-    useEffect(() => {
+
+    const paginateTags = (selectedTagArray) => {
       const start = (pageIndex - 1) * 12;
       const end = start === 0 ? 12 : (start * 2 || tagList.length);
-      if(ref.current.tagsArray.length > 0) {
+
+      //.... show the state of tags if selected or not when pagegination
+      if(selectedTagArray.length > 0) {
         for(let i = 0 ; i < tagList.length; i++) {
-          if(ref.current.tagsArray.find(item => item === tagList[i].id)) {
+          if(selectedTagArray.find(item => item === tagList[i].id)) {
               tagList[i].selected = true;
           }
         }
       }
-    
+    //........
       const tempArray = [...tagList.slice(start, end)];
       const len = tempArray.length;
       for (let i = 0 ; i < 12 - len; i++) {
         tempArray.push('');
       }
       setTags(tempArray);
+    }
+
+    useEffect(() => {
+      paginateTags(ref.current.tagsArray);
     }, [pageIndex]);
 
     return (
@@ -87,7 +93,13 @@ export default function FilterModal({ title = "", modalTarget, BtnOK = "OK", Btn
             {/* Modal Header */}
             <div className="modal-header">
               <h4 className="modal-title">{title}</h4>
-              <button type="button" className="close" data-dismiss="modal">×</button>
+              <button type="button" className="close" data-dismiss="modal"
+              onClick={() => {
+                setPageIndex(1);
+                ref.current.tagsArray = [];
+                paginateTags([])
+              }} 
+              >×</button>
             </div>
             {/* Modal body */}
             <div className="modal-body filter_modal_body"
@@ -99,7 +111,13 @@ export default function FilterModal({ title = "", modalTarget, BtnOK = "OK", Btn
             {/* Modal footer */}
             <div className="modal-footer">
             <button type="button" className="btn btn-success" data-dismiss="modal">{BtnOK}</button>
-              <button type="button" className="btn btn-danger" data-dismiss="modal">{BtnCancel}</button>
+              <button type="button" className="btn btn-danger" data-dismiss="modal"
+              onClick={() => {
+                  setPageIndex(1);
+                  ref.current.tagsArray = [];
+                  paginateTags([])
+                }} 
+                  >{BtnCancel}</button>
             </div>
           </div>
         </div>

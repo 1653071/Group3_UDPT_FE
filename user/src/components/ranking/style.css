@@ -3,6 +3,11 @@
     justify-content:space-between ;
 }
 
+.user_info img {
+    height: 50px;
+    width: 50px;
+}
+
 .user_info p{
     display: inline;
 }
