@@ -1,9 +1,16 @@
-import { type } from 'jquery';
 import React, {useState, useEffect, useRef} from 'react'
 import PaginationBar from '../paginationBar'
 import "./style.css"
 
-export default function FilterModal({ title = "", modalTarget, BtnOK = "OK", BtnCancel = "Close"}) {
+export default function FilterModal({ 
+  title = "", 
+  modalTarget, 
+  BtnOK = "OK", 
+  BtnCancel = "Close", 
+  onGetTags = null ,
+  initialSelectedTags,
+}) {
+    
     const tagList = [
         {id:0,name:'HTML',selected:false,},
         {id:1,name:'CSS',selected:false},
@@ -20,21 +27,28 @@ export default function FilterModal({ title = "", modalTarget, BtnOK = "OK", Btn
         {id:12,name:'Git',selected:false},
         {id:13,name:'JSON',selected:false},
     ]
+
     const ref = useRef({
-      tagsArray: [] // store selected tags
+      tagsArray: initialSelectedTags.length > 0 ? initialSelectedTags : [] // store selected tags
     });
+    useEffect(()=>{
+      console.log("HUHU")
+      paginateTags(initialSelectedTags);
+      ref.current.tagsArray = [...initialSelectedTags];
+    },[initialSelectedTags]);
+    
     const [tags, setTags] = useState(tagList.slice(0,12));
     const [pageIndex, setPageIndex] = useState(1);
 
-    const toggleTags = (tagId) => {
-        const index = tags.findIndex(item => item.id === tagId);
+    const toggleTags = (tag) => {
+        const index = tags.findIndex(item => item.id === tag.id);
         tags[index].selected = !tags[index].selected;
-        const duplicateTags = ref.current.tagsArray.find((item) => item === tagId);
+        const duplicateTags = ref.current.tagsArray.find((item) => item.id === tag.id);
         if(!duplicateTags) {
-          ref.current.tagsArray.push(tagId);
+          ref.current.tagsArray.push(tag);
         } else {
 
-          ref.current.tagsArray.splice(ref.current.tagsArray.findIndex(item => item === duplicateTags), 1);
+          ref.current.tagsArray.splice(ref.current.tagsArray.findIndex(item => item.id === duplicateTags), 1);
         }
         const newArr = [...tags]; 
         setTags(newArr); 
@@ -46,13 +60,13 @@ export default function FilterModal({ title = "", modalTarget, BtnOK = "OK", Btn
             return <div>
             <button className="modal_item"
             style = {{backgroundColor:"orange"}}
-            onClick={()=>{toggleTags(item.id)}}
+            onClick={()=>{toggleTags(item)}}
             >{item.name}</button>
         </div>
           } else if(item !== '') {
             return <div>
             <button className="modal_item"
-            onClick={()=>{toggleTags(item.id)}}
+            onClick={()=>{toggleTags(item)}}
             >{item.name}</button>
         </div>
           } else {
@@ -64,11 +78,10 @@ export default function FilterModal({ title = "", modalTarget, BtnOK = "OK", Btn
     const paginateTags = (selectedTagArray) => {
       const start = (pageIndex - 1) * 12;
       const end = start === 0 ? 12 : (start * 2 || tagList.length);
-
       //.... show the state of tags if selected or not when pagegination
       if(selectedTagArray.length > 0) {
         for(let i = 0 ; i < tagList.length; i++) {
-          if(selectedTagArray.find(item => item === tagList[i].id)) {
+          if(selectedTagArray.find(item => item.id === tagList[i].id)) {
               tagList[i].selected = true;
           }
         }
@@ -81,11 +94,11 @@ export default function FilterModal({ title = "", modalTarget, BtnOK = "OK", Btn
       }
       setTags(tempArray);
     }
-
+   
     useEffect(() => {
       paginateTags(ref.current.tagsArray);
     }, [pageIndex]);
-
+    
     return (
         <div className="modal" id={modalTarget}>
         <div className="modal-dialog">
@@ -110,7 +123,7 @@ export default function FilterModal({ title = "", modalTarget, BtnOK = "OK", Btn
             <PaginationBar numOfItem={tagList.length} setPageIndex={setPageIndex} selected={pageIndex}/>
             {/* Modal footer */}
             <div className="modal-footer">
-            <button type="button" className="btn btn-success" data-dismiss="modal">{BtnOK}</button>
+            <button type="button" className="btn btn-success" data-dismiss="modal" onClick={() => { onGetTags(ref.current.tagsArray) }}>{BtnOK}</button>
               <button type="button" className="btn btn-danger" data-dismiss="modal"
               onClick={() => {
                   setPageIndex(1);
