@@ -1,47 +1,85 @@
 <div class="container-fluid">
     <div class="page-header">
         <h3 class="title-header">Các tag hiện có</h3>
-        <button type="button" class="btn button-tag btn-primary">
-            Tạo Tag <span class="badge badge-light">+</span>
-        </button>
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddTagModal">
+                Thêm tag
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="AddTagModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thêm Tag</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Tên Tag</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Mô tả</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1">
+                                </div>
+                               
+                             
+                           
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Thêm</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="table-wrapper">
-              <table class="table">
-                    <thead>
-                        <tr class="table-primary">
-                            <th scope="col">#</th>
-                            <th scope="col">Tag</th>
-                            <th scope="col">Mô tả</th>
-                            <th scope="col">Câu hỏi</th>
-                            <th scope="col">Trả lời</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th style="width: 10%;" scope="row">1</th>
-                            <td style="width: 10%;">CSS</td>
-                            <td style="width: 50%;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium alias aut adipisci earum asperiores aliquam nemo ullam perferendis? Earum placeat magnam, quasi et aspernatur nulla vitae deleniti quam recusandae. Velit?</td>
-                            <td style="width: 10%;">127</td>
-                            <td style="width: 10%;">43</td>
-                            <td><button type="button" class="btn btn-outline-secondary">Xem</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
-     
-            <!-- <div class="row">
+        <table class="table">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="col">#</th>
+                    <th scope="col">Tag</th>
+                    <th scope="col">Mô tả</th>
+                    <th scope="col">Câu hỏi</th>
+                    <th scope="col">Trả lời</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th style="width: 10%;" scope="row">1</th>
+                    <td style="width: 10%;">CSS</td>
+                    <td style="width: 50%;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium alias aut adipisci earum asperiores aliquam nemo ullam perferendis? Earum placeat magnam, quasi et aspernatur nulla vitae deleniti quam recusandae. Velit?</td>
+                    <td style="width: 10%;">127</td>
+                    <td style="width: 10%;">43</td>
+                    <td><button type="button" class="btn btn-outline-secondary">Xem</button></td>
+                </tr>
+                <tr>
+                    <th style="width: 10%;" scope="row">1</th>
+                    <td style="width: 10%;">CSS</td>
+                    <td style="width: 50%;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium alias aut adipisci earum asperiores aliquam nemo ullam perferendis? Earum placeat magnam, quasi et aspernatur nulla vitae deleniti quam recusandae. Velit?</td>
+                    <td style="width: 10%;">127</td>
+                    <td style="width: 10%;">43</td>
+                    <td><button type="button" class="btn btn-outline-secondary">Xem</button></td>
+                </tr>
+                <tr>
+                    <th style="width: 10%;" scope="row">1</th>
+                    <td style="width: 10%;">CSS</td>
+                    <td style="width: 50%;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium alias aut adipisci earum asperiores aliquam nemo ullam perferendis? Earum placeat magnam, quasi et aspernatur nulla vitae deleniti quam recusandae. Velit?</td>
+                    <td style="width: 10%;">127</td>
+                    <td style="width: 10%;">43</td>
+                    <td><button type="button" class="btn btn-outline-secondary">Xem</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- <div class="row">
         <div class=" tag col-lg-3">
             <div class="card" style="width:300px;height:300px ">
             <div class="card-body">
@@ -89,7 +127,7 @@
             </div>
         </div>
     </div> -->
-        
+
     </div>
     <!-- <div class="row">
         <div class=" tag col-lg-3">
