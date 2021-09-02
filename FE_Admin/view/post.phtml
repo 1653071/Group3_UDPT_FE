@@ -1,61 +1,95 @@
 <div class="container-fluid">
     <div class="page-header">
         <h3 class="title-header">Bài viết trong forum</h3>
-        <button type="button" class="btn button-tag btn-primary filter-button">
-            Sắp xếp <span class="badge badge-light">+</span>
-        </button>
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="modal" data-target="#staticBackdrop">
+                Bộ lọc
+            </button>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Sắp xếp
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Cũ nhất</a>
+                <a class="dropdown-item" href="#">Mới nhất</a>
+
+            </div>
+        </div>
     </div>
 
     <div class="wrapper">
         <div class="card post-card">
             <div class="card-header">
-            <img class="card-img-top avatar" src="/view/img_avatar2.png" alt="Card image cap">
-            <span>Nguyen Minh Quang</span>
-            <button type="button" class="btn btn-danger ban-button">Xóa bài viết</button>
+                <img class="card-img-top avatar" src="/view/img_avatar2.png" alt="Card image cap">
+                <span>Nguyen Minh Quang</span>
+                <button type="button" class="btn btn-danger ban-button">Xóa bài viết</button>
             </div>
             <div class="card-body body-post">
-                <div class="answer"> 
-                <p class="card-text">Answer</p>
-                <p class="card-text">123</p>
+                <div class="answer">
+                    <p class="card-text">Answer</p>
+                    <p class="card-text">123</p>
                 </div>
-                <div class="post-detail"> 
-                <p class="title-text">Lorem ipsum dolor sit amet consectetur adipisicing elit ?</p>
-                <button type="button" class="btn btn-primary btn-sm">CSS</button>
-                <button type="button" class="btn btn-primary btn-sm">HTML</button>
-                <button type="button" class="btn btn-primary btn-sm">PHP</button>
-            </div>
-            
+                <div class="post-detail">
+                    <p class="title-text">Lorem ipsum dolor sit amet consectetur adipisicing elit ?</p>
+                    <button type="button" class="btn btn-primary btn-sm">CSS</button>
+                    <button type="button" class="btn btn-primary btn-sm">HTML</button>
+                    <button type="button" class="btn btn-primary btn-sm">PHP</button>
+                </div>
+
             </div>
             <div class="card-footer button-browse ">
                 <a href="index.php?action=detail&&id=1"><button type="button" class="btn btn-primary ahr">Xem chi tiết</button></a>
-                
+
             </div>
-            
+
         </div>
         <div class="card post-card">
             <div class="card-header">
-            <img class="card-img-top avatar" src="/view/img_avatar2.png" alt="Card image cap">
-            <span>Nguyen Minh Quang</span>
-            <button type="button" class="btn btn-danger ban-button">Xóa bài viết</button>
+                <img class="card-img-top avatar" src="/view/img_avatar2.png" alt="Card image cap">
+                <span>Nguyen Minh Quang</span>
+                <button type="button" class="btn btn-danger ban-button">Xóa bài viết</button>
             </div>
             <div class="card-body body-post">
-                <div class="answer"> 
-                <p class="card-text">Answer</p>
-                <p class="card-text">123</p>
+                <div class="answer">
+                    <p class="card-text">Answer</p>
+                    <p class="card-text">123</p>
                 </div>
-                <div class="post-detail"> 
-                <p class="title-text">Lorem ipsum dolor sit amet consectetur adipisicing elit ?</p>
-                <button type="button" class="btn btn-primary btn-sm">CSS</button>
-                <button type="button" class="btn btn-primary btn-sm">HTML</button>
-                <button type="button" class="btn btn-primary btn-sm">PHP</button>
-            </div>
-            
+                <div class="post-detail">
+                    <p class="title-text">Lorem ipsum dolor sit amet consectetur adipisicing elit ?</p>
+                    <button type="button" class="btn btn-primary btn-sm">CSS</button>
+                    <button type="button" class="btn btn-primary btn-sm">HTML</button>
+                    <button type="button" class="btn btn-primary btn-sm">PHP</button>
+                </div>
+
             </div>
             <div class="card-footer button-browse ">
                 <button type="button" class="btn btn-primary">Xem chi tiết</button>
-                
+
             </div>
-            
+
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Lọc theo chủ đề</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Chọn chủ đề bài viết</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary">Lọc</button>
+            </div>
         </div>
     </div>
 </div>

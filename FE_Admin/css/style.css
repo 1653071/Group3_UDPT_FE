@@ -930,6 +930,9 @@ table{
     border: none;
     margin-bottom: 10px;
   }
+  .modal-title{
+    color: red;
+  }
 
 
   

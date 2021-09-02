@@ -1,12 +1,13 @@
 <div class="container-fluid browse-post">
     <div class="page-header">
         <h4 class="title-header">Bài chờ duyệt</h4>
-        
 
-  <!-- Modal -->
-  
+
+        <!-- Modal -->
+
         <div class="dropdown">
-            <button type="button" class="btn btn-primary button-filter" data-toggle="modal" data-target="#staticBackdrop">
+
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="modal" data-target="#staticBackdrop">
                 Bộ lọc
             </button>
             <!-- Modal -->
@@ -18,16 +19,16 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                        <button href="#" class="btn btn-primary choose">CSS</button>
-                        <button href="#" class="btn btn-primary choose">CSS</button>
-                        <button href="#" class="btn btn-primary choose">CSS</button>
-                        <button href="#" class="btn btn-primary choose">CSS</button>
-                        <button href="#" class="btn btn-primary choose">CSS</button>
-                        <button href="#" class="btn btn-primary choose">CSS</button>
-                        <button href="#" class="btn btn-primary choose">CSS</button>
-                        <button href="#" class="btn btn-primary choose">CSS</button>
-                        <button href="#" class="btn btn-primary choose">CSS</button>
-                        <button href="#" class="btn btn-primary choose">CSS</button>
+                            <button href="#" class="btn btn-primary choose">CSS</button>
+                            <button href="#" class="btn btn-primary choose">CSS</button>
+                            <button href="#" class="btn btn-primary choose">CSS</button>
+                            <button href="#" class="btn btn-primary choose">CSS</button>
+                            <button href="#" class="btn btn-primary choose">CSS</button>
+                            <button href="#" class="btn btn-primary choose">CSS</button>
+                            <button href="#" class="btn btn-primary choose">CSS</button>
+                            <button href="#" class="btn btn-primary choose">CSS</button>
+                            <button href="#" class="btn btn-primary choose">CSS</button>
+                            <button href="#" class="btn btn-primary choose">CSS</button>
 
                         </div>
                         <div class="modal-footer">
@@ -59,15 +60,16 @@
                 <p class="title-text">what is css?</p>
 
                 <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt necessitatibus perspiciatis corporis neque sequi veniam ex unde? Quis eum quos tenetur harum omnis pariatur eius non. Corrupti vel asperiores animi!</p>
-                <button href="#" class="btn btn-primary stretched-link">CSS</button>
-                <button href="#" class="btn btn-primary stretched-link">PHP</button>
+                <button href="#" class="btn btn-primary ">CSS</button>
+                <button href="#" class="btn btn-primary ">PHP</button>
 
             </div>
             <div class="card-footer button-browse ">
                 <button type="button" class="btn btn-primary">Duyệt</button>
-                <button type="button" class="btn btn-danger">Hủy</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteModal">Không duyệt</button>
             </div>
         </div>
+        
         <div class="card bpost-card">
             <div class="card-header">
                 <img class="card-img-top avatar" src="/view/img_avatar2.png" alt="Card image cap">
@@ -80,23 +82,7 @@
                 <button href="#" class="btn btn-primary stretched-link">PHP</button>
             </div>
             <div class="card-footer button-browse ">
-                <button type="button" class="btn btn-primary">Duyệt</button>
-                <button type="button" class="btn btn-danger">Hủy</button>
-            </div>
-        </div>
-        <div class="card bpost-card">
-            <div class="card-header">
-                <img class="card-img-top avatar" src="/view/img_avatar2.png" alt="Card image cap">
-                <span>Nguyen Minh Quang</span>
-            </div>
-            <div class="card-body">
-                <p class="title-text">what is css?</p>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt necessitatibus perspiciatis corporis neque sequi veniam ex unde? Quis eum quos tenetur harum omnis pariatur eius non. Corrupti vel asperiores animi!</p>
-                <button href="#" class="btn btn-primary stretched-link">CSS</button>
-                <button href="#" class="btn btn-primary stretched-link">PHP</button>
-            </div>
-            <div class="card-footer button-browse ">
-                <button type="button" class="btn btn-primary">Duyệt</button>
+                <button type="button" class="btn btn-primary">Không duyệt</button>
                 <button type="button" class="btn btn-danger">Hủy</button>
             </div>
         </div>
@@ -106,4 +92,24 @@
 
 
 
+</div>
+
+
+<!-- Modal Delete -->
+<div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Không duyệt bài viết</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Xác nhận không duyệt bài viết này?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary">Không duyệt</button>
+            </div>
+        </div>
+    </div>
 </div>
