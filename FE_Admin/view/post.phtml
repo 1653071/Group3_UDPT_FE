@@ -18,49 +18,59 @@
 
     <div class="wrapper">
         <?php
-        foreach($data as $item ){
+        foreach ($data as $item) {
 
-         
+
         ?>
-        <div class="card post-card">
-            <form>
-            <div class="card-header">
-                <img class="card-img-top avatar" src="/view/img_avatar2.png" alt="Card image cap">
-                <span>Nguyen Minh Quang</span>
-                <button type="submit" class="btn btn-danger ban-button" name="action" value="delete-forum">Xóa bài viết</button>
-                <input type="hidden" name="id-post" value="<?php echo $item["forum_id"]?>"/>
-                <input type="hidden" name="user-id-post" value="<?php echo $item["user_id_fk"]?>"/>
-                
-            </div>
-            <div class="card-body body-post">
-                <div class="answer">
-                    <p class="card-text">Answer</p>
-                    <p class="card-text"><?php echo $item["num_of_comments"] ?></p>
-                </div>
-                <div class="answer">
-                    <p class="card-text">Like</p>
-                    <p class="card-text"><?php echo $item["num_of_likes"] ?></p>
-                </div>
-                <div class="post-detail">
-                    <p class="title-text"><?php echo $item["forum_name"] ?></p>
-                    <button type="button" class="btn btn-primary btn-sm">CSS</button>
-                    <button type="button" class="btn btn-primary btn-sm">HTML</button>
-                    <button type="button" class="btn btn-primary btn-sm">PHP</button>
-                </div>
+            <div class="card post-card">
+                <form>
+                    <div class="card-header">
+                        <img class="card-img-top avatar" src="/view/img_avatar2.png" alt="Card image cap">
+                        <span>Nguyen Minh Quang</span>
+                        <button type="submit" class="btn btn-danger ban-button" name="action" value="delete-forum">Xóa bài viết</button>
+                        <input type="hidden" name="id-post" value="<?php echo $item["forum_id"] ?>" />
+                        <input type="hidden" name="user-id-post" value="<?php echo $item["user_id_fk"] ?>" />
+
+                    </div>
+                    <div class="card-body body-post">
+                        <div class="answer">
+                            <p class="card-text">Answer</p>
+                            <p class="card-text"><?php echo $item["num_of_comments"] ?></p>
+                        </div>
+                        <div class="answer">
+                            <p class="card-text">Like</p>
+                            <p class="card-text"><?php echo $item["num_of_likes"] ?></p>
+                        </div>
+                        <div class="post-detail">
+                            <p class="title-text"><?php echo $item["forum_name"] ?></p>
+                            <button type="button" class="btn btn-primary btn-sm">CSS</button>
+                            <button type="button" class="btn btn-primary btn-sm">HTML</button>
+                            <button type="button" class="btn btn-primary btn-sm">PHP</button>
+                        </div>
+
+                    </div>
+                    </from>
+
+                    <div class="card-footer button-browse ">
+                        <form action="<?php echo 'index.php?action=detail'; ?>">
+
+                            <button type="submit" class="btn btn-primary ahr">Xem chi tiết</button>
+
+                            <input type="hidden" name="id" value=<?php echo $item["forum_id"]; ?> />
+                            <input type="hidden" name="userID" value=<?php echo $item["user_id_fk"]; ?> />
+                            <input type="hidden" name="forum_content" value=<?php echo $item["forum_content"]; ?> />
+                            <input type="hidden" name="forum_name" value=<?php echo $item["forum_name"] ?> />
+                            <input type="hidden" name="action" value="detail" />
+
+
+                        </form>
+                    </div>
 
             </div>
-        </from>
-            
-            <div class="card-footer button-browse ">
-                <a href="index.php?action=detail&&id=<?php echo $item["forum_id"]; ?>"><button type="button" class="btn btn-primary ahr">Xem chi tiết</button></a>
-                
-            </div>
-
-        </div>
         <?php
         }
         ?>
-       
+
     </div>
 </div>
 <!-- Modal -->
@@ -74,9 +84,18 @@
             <div class="modal-body">
                 <select class="form-select" aria-label="Default select example">
                     <option selected>Chọn chủ đề bài viết</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <?php
+                    foreach ($tags as $item) {
+
+
+                    ?>
+                        <option value=<?php echo $item["tagId"]?>><?php echo $item["tagName"]?></option>
+                        
+                    <?php
+                    }
+
+
+                    ?>
                 </select>
 
             </div>

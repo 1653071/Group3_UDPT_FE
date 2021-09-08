@@ -3,6 +3,7 @@ require_once("./model/Login.php");
 require_once("./model/UserModel.php");
 require_once("./model/ForumModel.php");
 require_once("./model/TagModel.php");
+require_once("./model/CommentModel.php");
 class HomeController
 {
     public function index()
@@ -12,14 +13,19 @@ class HomeController
         require("./view/Layout/Sidebar.phtml");
     }
     public function DetailPage()
-    {
-        $data = "Hello world !!!! ABC";
+    {  
+        $forum_name = $_REQUEST["forum_name"];
+        $content= $_REQUEST["forum_content"];
+        $id =$_REQUEST["id-post"];
+        $userID =$_REQUEST["userID"];
+        $comments = CommentModel::GetComments($id);
         $VIEW = "./view/DetailPage.phtml";
         require("./view/Layout/Sidebar.phtml");
     }
     public function TagPage()
     {
-        $data = "Hello world !!!! ABC";
+        $data= TagModel::GetTags();
+      
         $VIEW = "./view/Tag.phtml";
         require("./view/Layout/Sidebar.phtml");
     }
@@ -33,6 +39,7 @@ class HomeController
     public function ExistPost()
     {
         $data = ForumModel::getLegalQuestions();
+        $tags = TagModel::GetTags();
         $VIEW = "./view/post.phtml";
         require("./view/Layout/Sidebar.phtml");
     }
@@ -73,10 +80,13 @@ class HomeController
 
    }
    public function DeleteComment(){
-    ForumModel::deleteForum();
-    header('Location: index.php?action=post');
-
-}
+   
+  
+    CommentModel::deleteComment();
+    header("Location: index.php?action=post");
+    
+  }
+  
 
 }
 ?>
