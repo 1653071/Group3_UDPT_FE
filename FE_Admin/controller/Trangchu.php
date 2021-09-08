@@ -3,7 +3,9 @@ require_once("./model/Login.php");
 require_once("./model/UserModel.php");
 require_once("./model/ForumModel.php");
 require_once("./model/TagModel.php");
+
 require_once("./model/CommentModel.php");
+
 class HomeController
 {
     public function index()
@@ -39,7 +41,9 @@ class HomeController
     public function ExistPost()
     {
         $data = ForumModel::getLegalQuestions();
+
         $tags = TagModel::GetTags();
+
         $VIEW = "./view/post.phtml";
         require("./view/Layout/Sidebar.phtml");
     }
@@ -80,13 +84,14 @@ class HomeController
 
    }
    public function DeleteComment(){
-   
+
   
     CommentModel::deleteComment();
     header("Location: index.php?action=post");
     
   }
   
+
 
 }
 ?>

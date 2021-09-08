@@ -23,6 +23,7 @@ class TagModel
             
         
     }
+
     public static function GetTags()
     {
        
@@ -39,6 +40,7 @@ class TagModel
         
     }
     
+
     
 }
 ?>
