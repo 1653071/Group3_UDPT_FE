@@ -46,36 +46,26 @@
                     <th scope="col">#</th>
                     <th scope="col">Tag</th>
                     <th scope="col">Mô tả</th>
-                    <th scope="col">Câu hỏi</th>
-                    <th scope="col">Trả lời</th>
+                    <th scope="col">Hành động</th>
+                    
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th style="width: 10%;" scope="row">1</th>
-                    <td style="width: 10%;">CSS</td>
-                    <td style="width: 50%;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium alias aut adipisci earum asperiores aliquam nemo ullam perferendis? Earum placeat magnam, quasi et aspernatur nulla vitae deleniti quam recusandae. Velit?</td>
-                    <td style="width: 10%;">127</td>
-                    <td style="width: 10%;">43</td>
-                    <td><button type="button" class="btn btn-outline-secondary">Xem</button></td>
-                </tr>
-                <tr>
-                    <th style="width: 10%;" scope="row">1</th>
-                    <td style="width: 10%;">CSS</td>
-                    <td style="width: 50%;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium alias aut adipisci earum asperiores aliquam nemo ullam perferendis? Earum placeat magnam, quasi et aspernatur nulla vitae deleniti quam recusandae. Velit?</td>
-                    <td style="width: 10%;">127</td>
-                    <td style="width: 10%;">43</td>
-                    <td><button type="button" class="btn btn-outline-secondary">Xem</button></td>
-                </tr>
-                <tr>
-                    <th style="width: 10%;" scope="row">1</th>
-                    <td style="width: 10%;">CSS</td>
-                    <td style="width: 50%;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium alias aut adipisci earum asperiores aliquam nemo ullam perferendis? Earum placeat magnam, quasi et aspernatur nulla vitae deleniti quam recusandae. Velit?</td>
-                    <td style="width: 10%;">127</td>
-                    <td style="width: 10%;">43</td>
-                    <td><button type="button" class="btn btn-outline-secondary">Xem</button></td>
-                </tr>
+            <?php
+        foreach($data as $item ){
+
+         
+        ?>
+            <tr>
+                    <th style="width: 10%;" scope="row"><?php echo $item["tagId"]?></th>
+                    <td style="width: 10%;"><?php echo $item["tagName"]?></td>
+                    <td style="width: 80%;"><?php echo $item["tagDiscription"]?></td>
+                   
+                    <td><button type="button" class="btn btn-outline-secondary">Delete</button></td>
+            </tr>
+             <?php 
+            }?>   
             </tbody>
         </table>
 
