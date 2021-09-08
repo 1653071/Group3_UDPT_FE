@@ -17,56 +17,50 @@
     </div>
 
     <div class="wrapper">
+        <?php
+        foreach($data as $item ){
+
+         
+        ?>
         <div class="card post-card">
+            <form>
             <div class="card-header">
                 <img class="card-img-top avatar" src="/view/img_avatar2.png" alt="Card image cap">
                 <span>Nguyen Minh Quang</span>
-                <button type="button" class="btn btn-danger ban-button">Xóa bài viết</button>
+                <button type="submit" class="btn btn-danger ban-button" name="action" value="delete-forum">Xóa bài viết</button>
+                <input type="hidden" name="id-post" value="<?php echo $item["forum_id"]?>"/>
+                <input type="hidden" name="user-id-post" value="<?php echo $item["user_id_fk"]?>"/>
+                
             </div>
             <div class="card-body body-post">
                 <div class="answer">
                     <p class="card-text">Answer</p>
-                    <p class="card-text">123</p>
+                    <p class="card-text"><?php echo $item["num_of_comments"] ?></p>
+                </div>
+                <div class="answer">
+                    <p class="card-text">Like</p>
+                    <p class="card-text"><?php echo $item["num_of_likes"] ?></p>
                 </div>
                 <div class="post-detail">
-                    <p class="title-text">Lorem ipsum dolor sit amet consectetur adipisicing elit ?</p>
+                    <p class="title-text"><?php echo $item["forum_name"] ?></p>
                     <button type="button" class="btn btn-primary btn-sm">CSS</button>
                     <button type="button" class="btn btn-primary btn-sm">HTML</button>
                     <button type="button" class="btn btn-primary btn-sm">PHP</button>
                 </div>
 
             </div>
+        </from>
+            
             <div class="card-footer button-browse ">
-                <a href="index.php?action=detail&&id=1"><button type="button" class="btn btn-primary ahr">Xem chi tiết</button></a>
-
+                <a href="index.php?action=detail&&id=<?php echo $item["forum_id"]; ?>"><button type="button" class="btn btn-primary ahr">Xem chi tiết</button></a>
+                
             </div>
 
         </div>
-        <div class="card post-card">
-            <div class="card-header">
-                <img class="card-img-top avatar" src="/view/img_avatar2.png" alt="Card image cap">
-                <span>Nguyen Minh Quang</span>
-                <button type="button" class="btn btn-danger ban-button">Xóa bài viết</button>
-            </div>
-            <div class="card-body body-post">
-                <div class="answer">
-                    <p class="card-text">Answer</p>
-                    <p class="card-text">123</p>
-                </div>
-                <div class="post-detail">
-                    <p class="title-text">Lorem ipsum dolor sit amet consectetur adipisicing elit ?</p>
-                    <button type="button" class="btn btn-primary btn-sm">CSS</button>
-                    <button type="button" class="btn btn-primary btn-sm">HTML</button>
-                    <button type="button" class="btn btn-primary btn-sm">PHP</button>
-                </div>
-
-            </div>
-            <div class="card-footer button-browse ">
-                <button type="button" class="btn btn-primary">Xem chi tiết</button>
-
-            </div>
-
-        </div>
+        <?php
+        }
+        ?>
+       
     </div>
 </div>
 <!-- Modal -->

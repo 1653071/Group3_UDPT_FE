@@ -15,54 +15,45 @@
 
     <div class="wrapper">
         <p class="user-header">
-            <b>Số lượng người dùng: </b><span style="color:#B0B0B0;font-weight:600">10</span>
+            <b>Số lượng người dùng: </b><span style="color:#B0B0B0;font-weight:600"><?php echo count($data) ?></span>
         </p>
         <div class="container">
-    <div class="row height d-flex justify-content-center align-items-center">
-        <div class="col-md-8">
-            <div class="search"> <i class="fa fa-search"></i> <input type="text" class="form-control" placeholder="Tìm thành viên"></div>
+            <div class="row height d-flex justify-content-center align-items-center">
+                <div class="col-md-8">
+                    <div class="search"> <i class="fa fa-search"></i> <input type="text" class="form-control" placeholder="Tìm thành viên"></div>
+                </div>
+            </div>
+            <div class="line"></div>
         </div>
-    </div>
-    <div class="line"></div>
-</div>
 
         <div class="user-wrapper">
-            <div class="card user-info">
+            <?php
+            foreach ($data as $item =>$value) 
+            {
+            ?>
+                <div class="card user-info">
 
-                <div class="card-body">
-                    <img class="card-img-top avatar" src="/view/img_avatar2.png" alt="Card image cap">
-                    <span>Nguyen Minh Quang</span>
-                    <p class="text-post">
-                        <span>0 Vi phạm, </span>
-                        <span>3 Bài viết, </span>
-                        <span>1 Trả lời, </span>
-                    </p>
+                    <div class="card-body">
+                        <img class="card-img-top avatar" src="/view/img_avatar2.png" alt="Card image cap">
+                        <span><?php echo $value["first_name"] ?> <?php echo $value["last_name"] ?></span>
+                        <p class="text-post">
+                            <span>0 Vi phạm, </span>
+                            <span>3 Bài viết, </span>
+                            <span><?php echo $value["numOfComments"] ?> Trả lời, </span>
+                        </p>
+                    </div>
+                    <div class="card-footer button-browse ">
+                        <button type="button" class="btn btn-danger">Chặn người dùng</button>
+                        <button type="button" class="btn btn-primary">Xem thông tin</button>
+
+
+                    </div>
                 </div>
-                <div class="card-footer button-browse ">
-                    <button type="button" class="btn btn-danger">Chặn người dùng</button>
-                    <button type="button" class="btn btn-primary">Xem thông tin</button>
+            <?php
+            } 
+            ?>
 
 
-                </div>
-            </div>
-            <div class="card user-info">
-
-                <div class="card-body">
-                    <img class="card-img-top avatar" src="/view/img_avatar2.png" alt="Card image cap">
-                    <span>Nguyen Minh Quang</span>
-                    <p class="text-post">
-                        <span>0 Vi phạm, </span>
-                        <span>3 Bài viết, </span>
-                        <span>1 Trả lời, </span>
-                    </p>
-                </div>
-                <div class="card-footer button-browse ">
-                    <button type="button" class="btn btn-danger">Chặn người dùng</button>
-                    <button type="button" class="btn btn-primary">Xem thông tin</button>
-
-
-                </div>
-            </div>
 
         </div>
 
