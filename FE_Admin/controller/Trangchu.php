@@ -66,12 +66,8 @@ class HomeController
         require("./view/Layout/Login.phtml");
     }
     public function Login(){
-        if (isset($_POST["action"]) && $_POST["action"]=="login1" ){
-            $username = $_POST["username"];
-            $password = $_POST["password"];
-            header('Location: index.php');
-        }
-
+        LoginModel::login();
+      
     }
     public function createTag(){
          TagModel::createTag();
