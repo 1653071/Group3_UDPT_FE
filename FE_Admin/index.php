@@ -60,6 +60,10 @@ switch ($action) {
         $controller = new HomeController();
         $controller->DeleteComment();
         break;
+    case "legalize":
+        $controller = new HomeController();
+        $controller->LegalizeForum();
+        break;
     default:
         $controller = new HomeController();
         $controller->BrowsePost();

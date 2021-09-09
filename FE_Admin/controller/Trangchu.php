@@ -90,6 +90,13 @@ class HomeController
     header("Location: index.php?action=post");
     
   }
+  public function LegalizeForum(){
+
+  
+    ForumModel::LegalizeForum();
+    header("Location: index.php?action=accept-post");
+    
+  }
   
 
 
