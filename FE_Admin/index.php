@@ -2,6 +2,7 @@
 require_once("./controller/Trangchu.php");
 $action = "";
 
+
 if (isset($_REQUEST["action"])) {
     $action = $_REQUEST["action"];
 }
@@ -12,6 +13,8 @@ switch ($action) {
         $controller = new HomeController();
         $controller->DetailPage();
         break;
+
+
     case "tag-list":
         $controller = new HomeController();
         $controller->TagPage();
@@ -28,6 +31,7 @@ switch ($action) {
         $controller = new HomeController();
         $controller->ExistUser();
         break;
+
     
     case "login":
         $controller = new HomeController();
@@ -37,6 +41,7 @@ switch ($action) {
         $controller = new HomeController();
         $controller->Login();
         break;
+
     case "register":
         $controller = new HomeController();
         $controller->RegisterPage();
