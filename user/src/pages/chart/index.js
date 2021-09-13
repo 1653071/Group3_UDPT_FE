@@ -1,9 +1,17 @@
-import React from 'react'
-import TaskBar from '../../components/bars/taskbar'
+import axios from 'axios';
+import React,{useState, useEffect} from 'react'
 import Menu from '../../components/menu'
 import Ranking from '../../components/ranking'
 
 export default function Chart() {
+
+    const [chart,setChart] = useState([]);
+
+    useEffect(()=>{
+        axios.get("http://localhost:8080/api/chart/get_chart").then((res) => {
+            setChart(res.data);
+        })
+    },[]);
     const rankings = [
         {
             id: 0,
@@ -40,7 +48,7 @@ export default function Chart() {
             <Menu 
             component={Ranking} 
             header="Ranking" 
-            data={rankings}/>
+            data={chart}/>
         </div>
     )
 }

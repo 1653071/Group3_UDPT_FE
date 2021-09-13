@@ -6,12 +6,12 @@ import "./style.css"
 
 export default function Card({ data, type }) {
 
-    const {content, title, tag} = data;
+    const {forum_name, forum_content, tagList, lastName, firstName, imgUrl, forum_id} = data;
     return (
         <div className="cardInfo">
             <div className="row">
                 <div className="col">
-                    <img src={avatar} /> Vu Minh Dang
+                    <img src={imgUrl ? imgUrl : avatar} />{firstName} {lastName}
                 </div>
                 <div className="col">
                     <div className="row">
@@ -23,17 +23,16 @@ export default function Card({ data, type }) {
                     </div>
                 </div>
             </div>
-            { type === 'question' ? <h3>{title}</h3> : '' }
-            <div className="question_content">{content}</div>
+            { type === 'question' ? <h3>{forum_name}</h3> : '' }
+            <div className="question_content">{forum_content}</div>
             <div className="tagList">
             { 
-                tag && tag.map((item) => {
+                tagList && tagList.split(',').map((item) => {
                     return <div className="tag_item btn btn-primary">{item.name}</div>
                 })
             }
         </div>
-        
-            {type === 'question' ? <Comment questionTitle={title} /> : (type !== 'replies' ? <RepliedComments /> : '') }
+            {type === 'question' ? <Comment questionTitle={forum_name} questionId={forum_id}/> : (type !== 'replies' ? <RepliedComments /> : '') }
         </div>
     )
 }

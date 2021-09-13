@@ -4,8 +4,8 @@ import "./style.css"
 export default function PaginationBar({numOfItem, setPageIndex, selected}) {
     
     const getPageNumber = () => {
-        const numPage = numOfItem + 1;
-        if(numPage < 12) return 1;
+        const numPage = numOfItem;
+        if(numPage <= 12) return 1;
         if(Number.isInteger(numPage/12)) return numOfItem;
         return parseInt(numPage/12) + 1;
     }

@@ -9,8 +9,8 @@ export default function Menu({data, component: Component, header: Header, header
                 <SideBar />
                 <div className="col-sm-6">
                     {typeof header !== 'string' ? <Header /> : <div><h3>{header}</h3><hr/></div>}
-                    { Array.isArray(data) ? data.map((item) => {
-                        return <Component data={item} type="question"/>
+                    { Array.isArray(data) ? data.map((item, index) => {
+                        return <Component data={item} index={index} type="question"/>
                     }) : 
                          <Component />
                     } 
