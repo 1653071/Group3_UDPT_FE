@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {useState, useEffect, useRef} from 'react'
 import PaginationBar from '../paginationBar'
 import "./style.css"
@@ -9,33 +10,20 @@ export default function FilterModal({
   BtnCancel = "Close", 
   onGetTags = null ,
   initialSelectedTags,
+  tagList,
 }) {
-    
-    const tagList = [
-        {id:0,name:'HTML',selected:false,},
-        {id:1,name:'CSS',selected:false},
-        {id:2,name:'JS',selected:false},
-        {id:3,name:'React',selected:false},
-        {id:4,name:'Java',selected:false},
-        {id:5,name:'Python',selected:false},
-        {id:6,name:'GraphQL',selected:false},
-        {id:7,name:'C++',selected:false},
-        {id:8,name:'Git',selected:false},
-        {id:9,name:'JSON',selected:false},
-        {id:10,name:'GraphQL',selected:false},
-        {id:11,name:'C++',selected:false},
-        {id:12,name:'Git',selected:false},
-        {id:13,name:'JSON',selected:false},
-    ]
+
 
     const ref = useRef({
-      tagsArray: initialSelectedTags.length > 0 ? initialSelectedTags : [] // store selected tags
+      tagsArray: initialSelectedTags && initialSelectedTags.length > 0 ? initialSelectedTags : [] // store selected tags
     });
+
     useEffect(()=>{
-      console.log("HUHU")
+      
       paginateTags(initialSelectedTags);
+      if(initialSelectedTags)
       ref.current.tagsArray = [...initialSelectedTags];
-    },[initialSelectedTags]);
+    },[initialSelectedTags, tagList]);
     
     const [tags, setTags] = useState(tagList.slice(0,12));
     const [pageIndex, setPageIndex] = useState(1);
@@ -79,7 +67,7 @@ export default function FilterModal({
       const start = (pageIndex - 1) * 12;
       const end = start === 0 ? 12 : (start * 2 || tagList.length);
       //.... show the state of tags if selected or not when pagegination
-      if(selectedTagArray.length > 0) {
+      if(selectedTagArray &&  selectedTagArray.length > 0) {
         for(let i = 0 ; i < tagList.length; i++) {
           if(selectedTagArray.find(item => item.id === tagList[i].id)) {
               tagList[i].selected = true;
@@ -115,9 +103,7 @@ export default function FilterModal({
               >×</button>
             </div>
             {/* Modal body */}
-            <div className="modal-body filter_modal_body"
-      
-            >
+            <div className="modal-body filter_modal_body">
               {getFilteredTagList(tags)}
             </div>
             <PaginationBar numOfItem={tagList.length} setPageIndex={setPageIndex} selected={pageIndex}/>
