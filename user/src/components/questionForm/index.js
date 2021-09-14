@@ -2,15 +2,22 @@ import axios from 'axios';
 import React,{useState, useEffect} from 'react'
 import FilterModal from '../filterModal'
 import "./style.css"
+import ErrorAlert from '../alert/ErrorAlert';
+import InfoAlert from '../alert/InfoAlert';
+import ERROR_MSG from "../../constants/index"
 
 export default function QuestionForm() {
     const [selectedTags,setSelectedTags] = useState([]);
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     const [categories, setCategories] = useState([]);
-    const [categoryId,chooseCategory] = useState({});
+    const [categoryId,chooseCategory] = useState(1);
     const [tagList, setTagList] = useState([]);
     const [user, setUser] = useState({});
+    const [shownErrorAlert,setShowErrorAlert] = useState(false);
+    const [errAlertMsg,setErrorAlertMsg] = useState("");
+    const [shownInfoAlert,setShowInfoAlert] = useState(false);
+    const [infoAlertMsg,setInfoAlertMsg] = useState("");
    
     useEffect(()=>{
         axios("http://localhost:8080/api/forum/get_categories").then((res)=>{
@@ -26,8 +33,9 @@ export default function QuestionForm() {
             setTagList(newTags);
           })
           setUser(JSON.parse(localStorage.getItem('user')));
+         
     },[])
-    
+
     const removeTag = (id) => {
         const tempArr = [...selectedTags];
         const tagsArr = tempArr.filter(item => item.id !== id);
@@ -44,6 +52,7 @@ export default function QuestionForm() {
 
     const renderCategories = () => {
         return categories.map((item)=>{
+            console.log(item.category_id);
             return <option value={item.category_id}>{item.category_name}</option>
         })
     }
@@ -89,22 +98,42 @@ export default function QuestionForm() {
         </button>
         <button 
         onClick={()=>{
-            console.log(user.user_id);
-            axios({
-                method:"POST",
-                url:"http://localhost:8080/api/forum/create_question",
-                data: {
-                    forum_name: title,
-                    forum_content: body,
-                    user_id_fk: user.user_id,
-                    category_id_fk: +categoryId,
-                    tags: convertTagListToString(selectedTags)
-                }
-            }).then((res) => {
-                console.log(res);
-            }).catch((err) => {
-                console.log(err);
-            })
+            if(title === '') {
+                setErrorAlertMsg(ERROR_MSG.FORUM_TITLE_REQUIRED_MSG)
+                setShowErrorAlert(true);
+                setShowInfoAlert(false);
+            } else if( body === '') {
+                setErrorAlertMsg(ERROR_MSG.FORUM_BODY_REQUIRED_MSG)
+                setShowErrorAlert(true);
+                setShowInfoAlert(false);
+            } else {
+                axios({
+                    method:"POST",
+                    url:"http://localhost:8080/api/forum/create_question",
+                    data: {
+                        forum_name: title,
+                        forum_content: body,
+                        user_id_fk: user.user_id,
+                        category_id_fk: +categoryId,
+                        tags: convertTagListToString(selectedTags)
+                    }
+                }).then((res) => {
+                    if(res.data.statusCode === 204) {
+                        setInfoAlertMsg(res.data.message);
+                        setShowInfoAlert(true);
+                        setShowErrorAlert(false); 
+                        setTimeout(()=>{
+                            window.open('/','_parent');
+                        },2000)   
+                    } else {
+                        setErrorAlertMsg(res.data.message);
+                        setShowErrorAlert(true);
+                        setShowInfoAlert(false);
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }   
         }}
         className="btn btn-success">
             Submit
@@ -112,6 +141,8 @@ export default function QuestionForm() {
         <div className="tagField">
             {renderTags(selectedTags)}
         </div>
+        <ErrorAlert error={errAlertMsg} isShown={shownErrorAlert} />
+        <InfoAlert info={infoAlertMsg} isShown={shownInfoAlert} />
         <FilterModal 
         title="Add Tags" 
         modalTarget="addTagModal" 

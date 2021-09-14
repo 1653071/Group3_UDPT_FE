@@ -12,23 +12,7 @@ export default function FilterModal({
   initialSelectedTags,
   tagList,
 }) {
-    
-    // const tagList = [
-    //     {id:0,name:'HTML',selected:false,},
-    //     {id:1,name:'CSS',selected:false},
-    //     {id:2,name:'JS',selected:false},
-    //     {id:3,name:'React',selected:false},
-    //     {id:4,name:'Java',selected:false},
-    //     {id:5,name:'Python',selected:false},
-    //     {id:6,name:'GraphQL',selected:false},
-    //     {id:7,name:'C++',selected:false},
-    //     {id:8,name:'Git',selected:false},
-    //     {id:9,name:'JSON',selected:false},
-    //     {id:10,name:'GraphQL',selected:false},
-    //     {id:11,name:'C++',selected:false},
-    //     {id:12,name:'Git',selected:false},
-    //     {id:13,name:'JSON',selected:false},
-    // ]
+
 
     const ref = useRef({
       tagsArray: initialSelectedTags && initialSelectedTags.length > 0 ? initialSelectedTags : [] // store selected tags
