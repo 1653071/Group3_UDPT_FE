@@ -15,6 +15,20 @@ class ForumModel
         $response=json_decode($response_json, true);
         return $response;
     }
+    public static function searchQuestions()
+    {
+        // create & initialize a curl session
+        $search =$_REQUEST["filter"];
+        $url = "http://localhost:8080/api/forum/search_by_tags/$search";
+        $ch = curl_init($url);
+        
+        curl_setopt($ch, CURLOPT_HTTPGET, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response_json = curl_exec($ch);
+        curl_close($ch);
+        $response=json_decode($response_json, true);
+        return $response;
+    }
     public static function getIllegalQuestions()
     {
         // create & initialize a curl session
@@ -66,5 +80,6 @@ class ForumModel
     
         
     }
+
 }
 ?>

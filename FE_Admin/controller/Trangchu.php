@@ -53,6 +53,13 @@ class HomeController
         $VIEW = "./view/user.phtml";
         require("./view/Layout/Sidebar.phtml");
     }
+    public function logout()
+    {
+        session_start();
+
+        unset($_SESSION["user_id"]);
+        header("Location:index.php?action=login");
+    }
     public function LoginPage()
     {
         $data = "Hello world !!!! ABC";
@@ -71,7 +78,7 @@ class HomeController
     }
     public function createTag(){
          TagModel::createTag();
-         header('Location: index.php');
+         header('Location: index.php?action=tag-list');
 
     }
     public function deleteForum(){
@@ -91,6 +98,15 @@ class HomeController
   
     ForumModel::LegalizeForum();
     header("Location: index.php?action=accept-post");
+    
+  }
+  public function SearchForum(){
+
+    
+    $data = ForumModel::searchQuestions();
+    $tags = TagModel::GetTags();
+    $VIEW = "./view/post.phtml";
+    require("./view/Layout/Sidebar.phtml");
     
   }
   

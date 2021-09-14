@@ -713,6 +713,10 @@ table{
     float: right;
    
   }
+  .nav-header div{
+    float: right;
+   
+  }
   /*Tags style  */
   .tag{
     margin: 10px;
@@ -993,5 +997,8 @@ table{
        color: #ff0000;
        }
        #second{display:none;}
+      
 
+
+       
   
