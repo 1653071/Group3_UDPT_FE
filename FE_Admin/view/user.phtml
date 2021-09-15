@@ -43,11 +43,11 @@
                         </p>
                     </div>
                     <div class="card-footer button-browse ">
-                        <form method="POST" action="index.php?action=delete-user">
+                        <form action="index.php?action=delete-user">
                         <button type="submit" class="btn btn-danger">Chặn người dùng</button>
                         <input type="hidden" name="userid" value=<?php echo $value["user_id"]; ?> />
                         </form>
-                        <form method="POST" action="index.php?action=detail-user">
+                        <form action="index.php?action=detail-user">
                         <button type="submit" class="btn btn-primary" name="action" value="detail-user" >Xem thông tin</button>
                         
                         <input type="hidden" name="userid" value=<?php echo $value["user_id"]; ?> />
