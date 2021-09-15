@@ -14,6 +14,25 @@ class HomeController
         $VIEW = "./view/Trangchu.phtml";
         require("./view/Layout/Sidebar.phtml");
     }
+    public function RankingPage()
+    { 
+        $ranking = UserModel::GetRanking();
+        $data = "Hello world !!!! ABC";
+        $VIEW = "./view/ranking.phtml";
+        require("./view/Layout/Sidebar.phtml");
+    }
+    public function DetailUser()
+    {   
+        $userid = $_REQUEST["userid"];
+        $firstname = $_REQUEST["firstname"];
+        $lastname = $_REQUEST["lastname"];
+       
+        $email = $_REQUEST["email"];
+        $username = $_REQUEST["username"];
+        $comments = UserModel::GetCommentByUser($userid);
+        $VIEW = "./view/DetailUser.phtml";
+        require("./view/Layout/Sidebar.phtml");
+    }
     public function DetailPage()
     {  
         $forum_name = $_REQUEST["forum_name"];
@@ -107,6 +126,13 @@ class HomeController
     $tags = TagModel::GetTags();
     $VIEW = "./view/post.phtml";
     require("./view/Layout/Sidebar.phtml");
+    
+  }
+  public function DeleteUser(){
+
+    $userid = $_REQUEST["userid"];
+    UserModel::DeleteUser($userid);
+    header("Location: index.php?action=user");
     
   }
   
