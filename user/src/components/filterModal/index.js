@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, {useState, useEffect, useRef} from 'react'
+import { convertTagListToString } from '../../utils';
 import PaginationBar from '../paginationBar'
 import "./style.css"
 
@@ -11,6 +12,7 @@ export default function FilterModal({
   onGetTags = null ,
   initialSelectedTags,
   tagList,
+  setQuestionList
 }) {
 
 
@@ -83,6 +85,26 @@ export default function FilterModal({
       setTags(tempArray);
     }
    
+    const filterByTags = () => {
+      const tagList = convertTagListToString(ref.current.tagsArray);
+      axios({
+        url:`http://localhost:8080/api/forum/search_by_tags/${tagList}`,
+        method:"GET",
+      }).then((res)=>{
+       
+        setQuestionList(res.data[0] !== null ? res.data : []);
+      })
+    }
+
+    const getAllQuestions = () => {
+      axios({
+        method:"GET",
+        url:"http://localhost:8080/api/forum/get_legal_questions"
+    }).then((res)=>{
+        setQuestionList(res.data);
+  })
+    }
+
     useEffect(() => {
       paginateTags(ref.current.tagsArray);
     }, [pageIndex]);
@@ -109,7 +131,10 @@ export default function FilterModal({
             <PaginationBar numOfItem={tagList.length} setPageIndex={setPageIndex} selected={pageIndex}/>
             {/* Modal footer */}
             <div className="modal-footer">
-            <button type="button" className="btn btn-success" data-dismiss="modal" onClick={() => { onGetTags(ref.current.tagsArray) }}>{BtnOK}</button>
+            {BtnOK === "Filter" ? <button type="button" className="btn btn-secondary"
+            onClick={()=>{getAllQuestions()}}
+            >All</button> : ''}
+            <button type="button" className="btn btn-success" data-dismiss="modal" onClick={() => { BtnOK === "Filter" ? filterByTags() : onGetTags(ref.current.tagsArray) }}>{BtnOK}</button>
               <button type="button" className="btn btn-danger" data-dismiss="modal"
               onClick={() => {
                   setPageIndex(1);

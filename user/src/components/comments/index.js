@@ -6,7 +6,7 @@ import CardComment from '../cardComment';
 import ERROR_MSG from "../../constants/index";
 import "../comments/style.css"
 
-export default function Comment({questionId}) {
+export default function Comment({questionId, questionTitle}) {
 
 
     const [comments,setComments] = useState([]);
@@ -16,17 +16,11 @@ export default function Comment({questionId}) {
     const [shownInfoAlert,setShowInfoAlert] = useState(false);
     const [infoAlertMsg,setInfoAlertMsg] = useState("");
     const user = JSON.parse(localStorage.getItem("user"));
-
     const getCommentList = () => {
       axios.get(`http://localhost:8080/api/comment/get_comments/${questionId}`).then((res)=>{
         setComments(res.data);
       })
     }
-    
-    useEffect(()=>{
-      getCommentList();
-    },[])
-
     const sendComment = () => {
       if(inputComments !== '') {
         axios({
@@ -73,30 +67,11 @@ export default function Comment({questionId}) {
             <InfoAlert info={infoAlertMsg} isShown={shownInfoAlert} />
             <ErrorAlert error={errAlertMsg} isShown={shownErrorAlert}/>
             <hr/>
-             <div data-toggle="modal" data-target="#myModal">
+             <div data-toggle="modal" data-target="#myModal"
+             onClick={()=>{window.open(`get_comments/${questionId}`,"_parent")}}
+             >
                 Other comments ....
             </div>
-        <div className="modal fade" id="myModal">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            {/* Modal Header */}
-            <div className="modal-header">
-              <h4 className="modal-title">Modal Heading</h4>
-              <button type="button" className="close" data-dismiss="modal">×</button>
-            </div>
-            {/* Modal body */}
-            <div className="modal-body">
-              {comments.map((item) => {
-                  return <CardComment type='comment' data={item} questionId={questionId} user={user}/>
-              })}
-            </div>
-            {/* Modal footer */}
-            <div className="modal-footer">
-              <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
       </div>
     )
 }

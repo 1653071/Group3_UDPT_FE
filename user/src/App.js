@@ -6,6 +6,7 @@ import MainBar from './components/bars/mainBar';
 import Chart from './pages/chart';
 import Account from './pages/account';
 import AddQuestion from './pages/createQuestion';
+import CommentPage from './pages/comments';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path='/chart' component={Chart} exact/>
       <Route path='/account' component={Account} exact/>
       <Route path='/create_question' component={AddQuestion} exact/>
+      <Route path='/get_comments/:forumId' component={CommentPage} exact/>
       </BrowserRouter>
     </div>
   );
