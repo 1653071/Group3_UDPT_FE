@@ -5,6 +5,8 @@ import "./style.css"
 import ErrorAlert from '../alert/ErrorAlert';
 import InfoAlert from '../alert/InfoAlert';
 import ERROR_MSG from "../../constants/index"
+import { convertTagListToString } from '../../utils';
+
 
 export default function QuestionForm() {
     const [selectedTags,setSelectedTags] = useState([]);
@@ -57,14 +59,14 @@ export default function QuestionForm() {
         })
     }
 
-    const convertTagListToString = (tagListArr) => {
-        let tagString = '';
-        for(let i = 0 ; i < tagListArr.length; i++) {
-            tagString += tagListArr[i].name + ',';
-        }
-        return tagString
-        .slice(0,tagString.length-1);
-    }
+    // const convertTagListToString = (tagListArr) => {
+    //     let tagString = '';
+    //     for(let i = 0 ; i < tagListArr.length; i++) {
+    //         tagString += tagListArr[i].name + ',';
+    //     }
+    //     return tagString
+    //     .slice(0,tagString.length-1);
+    // }
    
     return (
         <div>

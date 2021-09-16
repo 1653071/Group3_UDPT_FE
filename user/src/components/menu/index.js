@@ -2,17 +2,20 @@ import React from 'react'
 import SideBar from '../bars/sidebar'
 import "./style.css"
 
-export default function Menu({data, component: Component, header: Header, header}) {
+export default function Menu({data, setQuestionList, questionId,component: Component, header: Header, header}) {
+    const user = JSON.parse(localStorage.getItem("user"));
     return (
         <div className="menu">
             <div className="menu_content row">
                 <SideBar />
                 <div className="col-sm-6">
-                    {typeof header !== 'string' ? <Header /> : <div><h3>{header}</h3><hr/></div>}
-                    { Array.isArray(data) ? data.map((item, index) => {
-                        return <Component data={item} index={index} type="question"/>
+                    {typeof header !== 'string' ? <Header setQuestionList={setQuestionList} /> : <div><h3>{header}</h3><hr/></div>}
+                    {console.log(data)}
+                    { data || data.length > 0 ? Array.isArray(data) ? data.map((item, index) => {
+                        return <Component data={item} index={index} type="question" user={user} questionId={questionId}/>
                     }) : 
                          <Component />
+                       : ""
                     } 
                     {/* {renderComponent(data)} */}
                 </div>

@@ -4,20 +4,16 @@ import avatar from '../../../src/img/avatar.png'
 import "./style.css"
 
 export default function CardComment({ data, questionId, user }) {
-    const [favoriteComments,setFavoriteComments] = useState([]);
     const [heartState, setHeartState] = useState(false);
     const {commentId, commentContent, num_of_likes, imgUrl, firstName, lastName } = data;
+    const [numLike, setNumLike] = useState(num_of_likes);
     
     useEffect(()=>{
         axios.get(`http://localhost:8080/api/comment/get_favorite_comments/${questionId}/${user.user_id}`).then((res)=>{
-            setFavoriteComments(res.data);
             setHeartState(getFavoriteState(res.data));
           })
     },[]);
     const likeComment = () => {
-        console.log( commentId);
-        console.log( user.user_id);
-        console.log( questionId);
         axios({
             url:`http://localhost:8080/api/comment/like_comment`,
             method:"POST",
@@ -27,18 +23,20 @@ export default function CardComment({ data, questionId, user }) {
                 "commentId":commentId,
             }
         }).then((res)=>{
-            console.log(res.data);
+            
             if(res.data.title === "liked comment") {
                 setHeartState(true);
+                setNumLike(prev => prev + 1);
             } else {
                 setHeartState(false);
+                setNumLike(prev => prev - 1);
             }
           })
     }
 
     const getFavoriteState = (favoriteComments) => {
         for(let i = 0 ; i<favoriteComments.length ; i++) {
-            if(favoriteComments[i].isLiked === true && favoriteComments[i].commentId === commentId) {
+            if(favoriteComments[i].liked === true && favoriteComments[i].commentId === commentId) {
                 return true;
             }
         }
@@ -56,8 +54,8 @@ export default function CardComment({ data, questionId, user }) {
                         <div className="col-5">
                             <i class="fa fa-heart" style={{"color":  heartState === true ? "red" : "grey" }}
                                 onClick={()=>{likeComment()}}
-                            ></i> {num_of_likes}
-                            <i class="fa fa-flag"></i>
+                            ></i> {numLike}
+                        
                         </div>
                     </div>
                 </div>
