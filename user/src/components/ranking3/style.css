@@ -1,0 +1,42 @@
+.ranking {
+    display: flex;
+    justify-content:space-between ;
+}
+
+.user_info img {
+    height: 50px;
+    width: 50px;
+}
+
+.user_info {
+    display:flex;
+    
+}
+
+img{
+  width: 60px;
+  height: 40px;  
+}
+
+.fa-heart{
+  color: red;  
+}
+
+.detail a {
+    margin-right: 15px;
+}
+
+.index {
+    margin-right: 10px;
+    font-weight: 700;
+}
+
+.ranking {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.username{
+    width: 120px;
+}
