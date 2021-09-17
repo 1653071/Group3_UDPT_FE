@@ -17,7 +17,7 @@ class HomeController
     public function RankingPage()
     { 
         $ranking = UserModel::GetRanking();
-        $data = "Hello world !!!! ABC";
+       
         $VIEW = "./view/ranking.phtml";
         require("./view/Layout/Sidebar.phtml");
     }
@@ -57,12 +57,13 @@ class HomeController
         $VIEW = "./view/browse-post.phtml";
         require("./view/Layout/Sidebar.phtml");
     }
+    
     public function ExistPost()
     {
         $data = ForumModel::getLegalQuestions();
 
         $tags = TagModel::GetTags();
-
+        
         $VIEW = "./view/post.phtml";
         require("./view/Layout/Sidebar.phtml");
     }

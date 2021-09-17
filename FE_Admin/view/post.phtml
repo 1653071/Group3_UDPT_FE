@@ -24,11 +24,14 @@
 
 
             ?>
+                <?php $res = UserModel::GetUser($value["user_id_fk"]);
+                      
+                 ?>
                 <div class="card post-card">
                     <form>
                         <div class="card-header">
                             <img class="card-img-top avatar" src="/view/img_avatar2.png" alt="Card image cap">
-                            <span>Nguyen Minh Quang</span>
+                            <span><?php echo $res["first_name"]  ?> <?php echo $res["last_name"]  ?></span>
                             <button type="submit" class="btn btn-danger ban-button" name="action" value="delete-forum">Xóa bài viết</button>
                             <input type="hidden" name="id-post" value="<?php echo $value["forum_id"] ?>" />
                             <input type="hidden" name="user-id-post" value="<?php echo $value["user_id_fk"] ?>" />
