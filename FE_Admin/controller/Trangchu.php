@@ -37,7 +37,7 @@ class HomeController
     {  
         $forum_name = $_REQUEST["forum_name"];
         $content= $_REQUEST["forum_content"];
-        $id =$_REQUEST["id-post"];
+        $id =$_REQUEST["id"];
         $userID =$_REQUEST["userID"];
         $comments = CommentModel::GetComments($id);
         $VIEW = "./view/DetailPage.phtml";
