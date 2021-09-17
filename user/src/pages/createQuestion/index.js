@@ -5,7 +5,7 @@ import QuestionForm from '../../components/questionForm'
 export default function AddQuestion() {
     return (
         <div>
-            <Menu header="Create questions" component={QuestionForm} />
+            <Menu header="Create questions" component={QuestionForm}  />
         </div>
     )
 }

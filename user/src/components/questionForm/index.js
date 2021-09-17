@@ -58,15 +58,6 @@ export default function QuestionForm() {
             return <option value={item.category_id}>{item.category_name}</option>
         })
     }
-
-    // const convertTagListToString = (tagListArr) => {
-    //     let tagString = '';
-    //     for(let i = 0 ; i < tagListArr.length; i++) {
-    //         tagString += tagListArr[i].name + ',';
-    //     }
-    //     return tagString
-    //     .slice(0,tagString.length-1);
-    // }
    
     return (
         <div>
