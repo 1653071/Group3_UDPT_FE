@@ -6,7 +6,8 @@ import Menu from '../../components/menu'
 
 
 export default function Home() {
-
+    if(localStorage.getItem("isLogin" ) === 'false')
+    window.location.replace("/signin");
     const [questionList,setQuestionList] = useState([]); 
     useEffect(()=>{
         Axios({

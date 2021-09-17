@@ -23,6 +23,7 @@ export default function SignIn() {
         }
         axios.post("http://localhost:8080/api/user/signIn", body,headers).then((res)=>{
             localStorage.setItem("user",JSON.stringify(res.data));
+            localStorage.setItem("isLogin",true);
             setErrMsg("");
             window.open('/','_parent');
         }).catch((err) => {

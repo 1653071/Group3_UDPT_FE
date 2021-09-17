@@ -12,7 +12,8 @@
 
 .cardInfo i {
     font-size: 30px;
-    margin-right: 20px;
+    margin-right: 7px;
+    cursor: pointer;
 }
 
 .question_content {

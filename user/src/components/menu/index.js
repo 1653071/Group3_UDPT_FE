@@ -14,7 +14,7 @@ export default function Menu({data, setQuestionList, questionId,component: Compo
                     { data || data.length > 0 ? Array.isArray(data) ? data.map((item, index) => {
                         return <Component data={item} index={index} type="question" user={user} questionId={questionId}/>
                     }) : 
-                         <Component />
+                         <Component data={data}/>
                        : ""
                     } 
                     {/* {renderComponent(data)} */}
