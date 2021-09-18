@@ -10,15 +10,14 @@ class CommentModel
         $idcomment = $_REQUEST["id-comment"];
         $payload = json_encode( array( "forumId"=> $idpost ,
         "userId"=>$iduser,
-        "commentId"=>$idcomment
-  ) );
+        "commentId"=>$idcomment ) );
         // $data = array(
         //     'tagName' => 'blogger#post',
             
         // );
             
-            $url = 'http://localhost:8080/api/comment/delete_comment';
-            $ch = curl_init($url);
+        $url = 'http://localhost:8080/api/comment/delete_comment';
+        $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
         curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
         curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
